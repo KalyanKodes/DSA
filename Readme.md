@@ -5,8 +5,8 @@ This guide provides a structured approach to learning Data Structures and Algori
 ## Table of Contents
 
 1. [Data Structures](#data-structures)
-   - [Array](#array) - **Status:** Pending
-   - [Linked List](#linked-list) - **Status:** Pending
+   - [Array](#array) - **Status:** Completed
+   - [Linked List](#linked-list) - **Status:** Completed
    - [Stack](#stack) - **Status:** Pending
    - [Queue](#queue) - **Status:** Pending
    - [Hash](#hash) - **Status:** Pending
