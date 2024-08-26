@@ -7,7 +7,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 1. [Data Structures](#data-structures)
    - [Array](#array) - **Status:** Completed
    - [Linked List](#linked-list) - **Status:** Completed
-   - [Stack](#stack) - **Status:** Pending
+   - [Stack](#stack) - **Status:** Completed
    - [Queue](#queue) - **Status:** Pending
    - [Hash](#hash) - **Status:** Pending
    - [Heap](#heap) - **Status:** Pending
@@ -31,17 +31,17 @@ This guide provides a structured approach to learning Data Structures and Algori
 ## Data Structures
 
 ### Array
-- **Status:** Pending
+- **Status:** Completed
 - Begin with understanding arrays, as they form the basis of most data structures.
 - Learn about different array operations like insertion, deletion, and traversal.
 
 ### Linked List
-- **Status:** Pending
+- **Status:** Completed
 - Explore singly and doubly linked lists.
 - Understand the pros and cons of using linked lists compared to arrays.
 
 ### Stack
-- **Status:** Pending
+- **Status:** Completed
 - Learn about the Last In First Out (LIFO) principle.
 - Study stack operations like push, pop, and peek.
 
