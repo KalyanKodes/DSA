@@ -41,12 +41,6 @@ class CircularQueue {
             console.log("Queue is Empty");
             return;
         }
-        // let result = "";
-        // let i = this.front;
-        // do {
-        //     result += this.queue[i] + " ";
-        //     i = (i + 1) % this.size;
-        // } while (i !== (this.rear + 1) % this.size);
         console.log(this.queue);
     }
 
