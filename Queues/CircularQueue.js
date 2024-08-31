@@ -1,3 +1,8 @@
+// In circular Queue we can over come the disadvantage of Linear Queue
+// We use the space efficently in Circular Queue by modifying rear = (rear + 1) % sizeOfQueue when enQueue, and front = (front + 1) % sizeOfQueue when deQueue
+
+
+console.clear();
 class CircularQueue {
     constructor() {
         this.size = 5;
@@ -8,7 +13,7 @@ class CircularQueue {
 
     enQueue(element) {
         if (this.isFull()) {
-            console.log("Queue is Full");
+            // console.log("Queue is Full");
             return;
         }
 
@@ -24,7 +29,7 @@ class CircularQueue {
 
     deQueue() {
         if (this.isEmpty()) {
-            console.log("Queue is Empty");
+            // console.log("Queue is Empty");
             return;
         }
         this.queue[this.front] = null;
@@ -38,7 +43,7 @@ class CircularQueue {
 
     display() {
         if (this.isEmpty()) {
-            console.log("Queue is Empty");
+            // console.log("Queue is Empty");
             return;
         }
         console.log(this.queue);
@@ -53,19 +58,5 @@ class CircularQueue {
     }
 }
 
-let q = new CircularQueue();
 
-q.enQueue(1);
-q.display();
-q.enQueue(2);
-q.display();
-q.enQueue(3);
-q.display();
-q.deQueue();
-q.display();
-q.deQueue();
-q.display();
-q.enQueue(10)
-q.deQueue();
-// q.deQueue();
-q.display();
+

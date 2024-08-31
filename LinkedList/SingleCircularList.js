@@ -28,7 +28,7 @@ class SingleCircularLinkedList{
             this.head = newNode;
         }
         this.size++;
-        this.displayList();
+        // this.displayList();
     }
 
     insertLast(data){
@@ -46,13 +46,13 @@ class SingleCircularLinkedList{
             newNode.next = this.head;
         }
         this.size++;
-        this.displayList();
+        // this.displayList();
     }
 
 
     deleteFront(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
             return;
         }
         if(this.head.next === this.head){
@@ -67,13 +67,13 @@ class SingleCircularLinkedList{
             this.head = this.head.next;
         }
         this.size--;
-        this.displayList();
+        // this.displayList();
     }
 
 
     deleteLast(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
             return;
         }
         if(this.head.next === this.head){
@@ -89,12 +89,12 @@ class SingleCircularLinkedList{
             prevNode.next = this.head;
         }
         this.size--;
-        this.displayList();
+        // this.displayList();
     }
 
     displayList(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
             return;
         }
         let temp = this.head;
@@ -110,29 +110,3 @@ class SingleCircularLinkedList{
     }
 }
 
-
-function testSingleCircularLinkedList() {
-    let list = new SingleCircularLinkedList();
-
-    // Test Case 1: Insert elements at the beginning
-    list.insertFront(10); // 10
-    list.insertFront(20); // 20 -> 10
-    list.insertFront(30); // 30 -> 20 -> 10
-
-    // Test Case 2: Insert elements at the end
-    list.insertLast(40);  // 30 -> 20 -> 10 -> 40
-
-
-    // Test Case 3: Delete elements from the front
-    list.deleteFront(); // 20 -> 10 -> 40
-    list.deleteFront(); // 10 -> 40 
-
-    // Test Case 4: Delete elements from the end
-    list.deleteLast();  // 10 -> 
-    list.deleteLast();  // 20 -> 10 -
-    list.displayList();
-
-}
-
-// Call the test function
-testSingleCircularLinkedList();

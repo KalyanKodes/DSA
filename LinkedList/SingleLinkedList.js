@@ -29,8 +29,8 @@ class SinglyLinkedList{
         newNode.next = this.head;
         this.head = newNode;
         this.size++;
-        this.getSize();
-        this.displayList();
+        // this.getSize();
+        // this.displayList();
     }
     
     insertLast(value){
@@ -46,13 +46,13 @@ class SinglyLinkedList{
             lastNode.next = newNode;
         }
         this.size++;
-        this.getSize();
-        this.displayList();
+        // this.getSize();
+        // this.displayList();
     }
 
     insertAtIndex(value , index){
         if(index < 0 || index > this.size){
-            console.log("Index out of Range");
+            // console.log("Index out of Range");
             return;
         }
         if(index === 0){
@@ -72,13 +72,14 @@ class SinglyLinkedList{
             newNode.next = curNode;
         }
         this.size++;
-        this.getSize();
-        this.displayList();
+        // this.getSize();
+        // this.displayList();
     }
 
     deleteFront(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
+            return;
         }
         else{
             if(this.head.next === null){
@@ -88,14 +89,15 @@ class SinglyLinkedList{
                 this.head = this.head.next;
             }
             this.size--;
-            this.getSize();
-            this.displayList();
+            // this.getSize();
+            // this.displayList();
         }
     }
 
     deleteLast(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
+            return;
         }
         else{
             if(this.head.next === null){
@@ -111,26 +113,27 @@ class SinglyLinkedList{
                 prevNode.next = null;
             }
             this.size--;
-            this.getSize();
-            this.displayList();
+            // this.getSize();
+            // this.displayList();
         }
     }
 
     deleteAtIndex(index){
         if(this.isEmpty()){
-            console.log("List is Empty")
+            // console.log("List is Empty")
             return;
         }
 
         if(index < 0 || index > this.size){
-            console.log("Index out of Range");
+            // console.log("Index out of Range");
             return;
         }
-
-        if(this.head.next === null){
-            this.head = null;
+        // console.log("Size Before: " , this.getSize())
+        if(index === 0){
+            this.deleteFront();
         }
         else{
+            // console.log("Deleting in middle elements")
             let count = 0;
             let prevNode = this.head;
             let curNode = this.head;
@@ -140,11 +143,14 @@ class SinglyLinkedList{
                 count++;
             }
             prevNode.next = curNode.next;
+            this.size--;
         }
-        this.size--;
-        this.getSize();
-        this.displayList();
+        
+        // console.log("Size after: " , this.getSize())
+        // this.getSize();
     }
+
+    
 
     isEmpty(){
         return this.head === null;
@@ -152,9 +158,10 @@ class SinglyLinkedList{
 
     displayList(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
             return;
         }
+        // console.log("Size of List: " , this.getSize())
         let temp = this.head;
         let result = "";
         while(temp != null){
@@ -170,56 +177,25 @@ class SinglyLinkedList{
             let count = 0;
             while(temp != null){
                 if(temp.data === element){
-                    console.log(`${element} found at index ${count}`)
-                    return;
+                    // console.log(`${element} found at index ${count}`)
+                    return count;
                 }
                 temp = temp.next;
                 count++;
             }
-            console.log(`${element} not found`)
-            return;
+            // console.log(`${element} not found`)
+            return -1;
         }
         else{
-            console.log("List is Empyt")
+            // console.log("List is Empyt")
+            return -1;
         }
     }
 
     getSize(){
-        console.log("Size of List: " , this.size)
+        return this.size;
     }
 }
-
-function runTestCases() {
-    let list = new SinglyLinkedList();
-
-    // Test Case 1: Insert elements at the beginning
-    list.insertFirst(10); // 10
-    list.insertFirst(20); // 20 -> 10
-    list.insertFirst(30); // 30 -> 20 -> 10
-
-    // Test Case 2: Insert elements at the end
-    list.insertLast(40);  // 30 -> 20 -> 10 -> 40
-
-    // Test Case 3: Insert at specific index
-    list.insertAtIndex(50, 0); // 50 -> 30 -> 20 -> 10 -> 40
-    list.insertAtIndex(60, 4); // 50 -> 30 -> 20 -> 10 -> 60 -> 40
-    list.insertAtIndex(70, 6); // 50 -> 30 -> 20 -> 10 -> 60 -> 40 -> 70
-
-    // Test Case 4: Delete elements from the front
-    list.deleteFront(); // 30 -> 20 -> 10 -> 60 -> 40 -> 70
-    list.deleteFront(); // 20 -> 10 -> 60 -> 40 -> 70
-
-    // Test Case 5: Delete elements from the end
-    list.deleteLast();  // 20 -> 10 -> 60 -> 40
-    list.deleteLast();  // 20 -> 10 -> 60
-
-    // Test Case 6: Search for existing and non-existing elements
-    list.searchElement(60);   // 60 found at index 2
-    list.searchElement(320);  // 320 not found
-}
-
-// Call the function to run the test cases
-runTestCases();
 
 
 

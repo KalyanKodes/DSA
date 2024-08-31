@@ -83,7 +83,7 @@ class DoubleLinkedList {
 
     deleteFront(){
         if(this.isEmpty()){
-            console.log("List is Empty")
+            // console.log("List is Empty")
             return;
         }
 
@@ -103,7 +103,7 @@ class DoubleLinkedList {
 
     deleteLast(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
             return;
         }
 
@@ -131,7 +131,7 @@ class DoubleLinkedList {
 
     deleteAtIndex(index){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
             return;
         }
 
@@ -140,9 +140,7 @@ class DoubleLinkedList {
             return;
         }
 
-        if(this.head.next === null){
-            this.head = null
-        }
+
 
         if(index === 0){
             this.deleteFront();
@@ -157,8 +155,8 @@ class DoubleLinkedList {
                 count++;
             }
             prevNode.next = curNode.next;
+            this.size--;
         }
-        this.size--;
     }
 
 
@@ -181,73 +179,3 @@ class DoubleLinkedList {
 }
 
 
-// Test Cases for DoubleLinkedList
-function runTestCases() {
-    // Initialize a new Double Linked List
-    let dll = new DoubleLinkedList();
-
-    // Test case 1: Insert at the beginning
-    dll.insertFirst(10);
-    dll.insertFirst(11);
-    dll.insertFirst(12);
-    console.log("Test 1 (Insert at beginning):");
-    dll.displayList();  // Expected: null <- 12 -> <- 11 -> <- 10 -> null
-
-    // Test case 2: Insert at the end
-    dll.insertLast(9);
-    dll.insertLast(8);
-    console.log("Test 2 (Insert at end):");
-    dll.displayList();  // Expected: null <- 12 -> <- 11 -> <- 10 -> <- 9 -> <- 8 -> null
-
-    // Test case 3: Insert at a specific index
-    dll.insertAtIndex(5, 7);
-    dll.insertAtIndex(0, 13);
-    dll.insertAtIndex(3, 234);
-    console.log("Test 3 (Insert at index):");
-    dll.displayList();  // Expected: null <- 13 -> <- 12 -> <- 11 -> <- 234 -> <- 10 -> <- 9 -> <- 7 -> <- 8 -> null
-
-    // Test case 4: Delete from the front
-    dll.deleteFront();
-    console.log("Test 4 (Delete from front):");
-    dll.displayList();  // Expected: null <- 12 -> <- 11 -> <- 234 -> <- 10 -> <- 9 -> <- 7 -> <- 8 -> null
-
-    // Test case 5: Delete from the end
-    dll.deleteLast();
-    console.log("Test 5 (Delete from end):");
-    dll.displayList();  // Expected: null <- 12 -> <- 11 -> <- 234 -> <- 10 -> <- 9 -> <- 7 -> null
-
-    // Test case 6: Delete at a specific index
-    dll.deleteAtIndex(2);
-    dll.deleteAtIndex(0);
-    dll.deleteAtIndex(0);
-    dll.deleteAtIndex(3);
-    console.log("Test 6 (Delete at index):");
-    dll.displayList();  // Expected: null <- 9 -> <- 7 -> null
-
-    // Additional edge case testing
-    console.log("Additional Edge Case Tests:");
-
-    // Edge case: Deleting when the list is empty
-    dll.deleteAtIndex(0);
-    dll.deleteAtIndex(0);
-    dll.deleteFront();
-    dll.deleteLast();
-    dll.deleteAtIndex(0);
-    dll.deleteFront();  // Should not cause any errors
-    console.log("Edge case (Delete when list is empty):");
-    dll.displayList();  // Expected: List Is Empty
-
-    // Edge case: Inserting into an empty list at an index other than 0
-    dll.insertAtIndex(1, 20);  // Should show an index out of range error
-
-    // Edge case: Deleting from an index out of range
-    dll.insertFirst(1);
-    dll.deleteAtIndex(5);  // Should show an index out of range error
-
-    // Final state of the list
-    console.log("Final state of the list:");
-    dll.displayList();  // Expected: null <- 1 -> null
-}
-
-// Run the test cases
-runTestCases();

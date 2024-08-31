@@ -1,3 +1,4 @@
+console.clear();
 class Node{
     constructor(data){
         this.prev = null;
@@ -55,7 +56,7 @@ class DoubleCircularLinkedList{
 
     deleteFirst(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
             return;
         }
         if(this.head.next === this.head){
@@ -71,7 +72,7 @@ class DoubleCircularLinkedList{
 
     deleteLast(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
             return;
         }
         if(this.head.next === this.head){
@@ -85,7 +86,7 @@ class DoubleCircularLinkedList{
     }
     displayList(){
         if(this.isEmpty()){
-            console.log("List is Empty");
+            // console.log("List is Empty");
             return;
         }
         let temp = this.head;
@@ -104,31 +105,3 @@ class DoubleCircularLinkedList{
 }
 
 
-function testDoubleCircularLinkedList() {
-    let list = new DoubleCircularLinkedList();
-
-    // Test Case 1: Insert elements at the end
-    list.insertLast(9);  // List: 9
-    list.insertLast(8);  // List: 9 -> 8
-    list.insertLast(7);  // List: 9 -> 8 -> 7
-
-    // Test Case 2: Insert elements at the beginning
-    list.insertFront(10); // List: 10 -> 9 -> 8 -> 7
-    list.insertFront(11); // List: 11 -> 10 -> 9 -> 8 -> 7
-    list.insertFront(12); // List: 12 -> 11 -> 10 -> 9 -> 8 -> 7
-    list.insertFront(13); // List: 13 -> 12 -> 11 -> 10 -> 9 -> 8 -> 7
-
-    // Test Case 3: Delete elements from the front
-    list.deleteFirst();  // List: 12 -> 11 -> 10 -> 9 -> 8 -> 7
-    list.deleteFirst();  // List: 11 -> 10 -> 9 -> 8 -> 7
-
-    // Test Case 4: Delete elements from the end
-    list.deleteLast();   // List: 11 -> 10 -> 9 -> 8
-    list.deleteLast();   // List: 11 -> 10 -> 9
-
-    // Display the final state of the list
-    list.displayList();  // Expected output: 11 -> 10 -> 9 (with circular references)
-}
-
-// Call the test function
-testDoubleCircularLinkedList();

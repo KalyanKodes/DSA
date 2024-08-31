@@ -8,7 +8,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Array](#array) - **Status:** Completed
    - [Linked List](#linked-list) - **Status:** Completed
    - [Stack](#stack) - **Status:** Completed
-   - [Queue](#queue) - **Status:** Pending
+   - [Queue](#queue) - **Status:** Completed
    - [Hash](#hash) - **Status:** Pending
    - [Heap](#heap) - **Status:** Pending
    - [Graph](#graph) - **Status:** Pending
@@ -46,7 +46,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 - Study stack operations like push, pop, and peek.
 
 ### Queue
-- **Status:** Pending
+- **Status:** Completed
 - Understand the First In First Out (FIFO) principle.
 - Explore different types of queues like circular queues.
 
