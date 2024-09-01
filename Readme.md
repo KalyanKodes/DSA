@@ -9,7 +9,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Linked List](#linked-list) - **Status:** Completed
    - [Stack](#stack) - **Status:** Completed
    - [Queue](#queue) - **Status:** Completed
-   - [Hash](#hash) - **Status:** Pending
+   - [Hash](#hash) - **Status:** Completed
    - [Heap](#heap) - **Status:** Pending
    - [Graph](#graph) - **Status:** Pending
    - [Tree](#tree) - **Status:** Pending
@@ -51,7 +51,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 - Explore different types of queues like circular queues.
 
 ### Hash
-- **Status:** Pending
+- **Status:** Completed
 - Dive into hash tables, hash functions, and collision resolution techniques.
 - Understand the use cases of hash maps.
 
