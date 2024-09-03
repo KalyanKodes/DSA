@@ -17,7 +17,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [String](#string) - **Status:** Pending
 2. [Algorithms](#algorithms)
    - [Sorting](#sorting) - **Status:** Pending
-   - [Searching](#searching) - **Status:** Pending
+   - [Searching](#searching) - **Status:** Completed
    - [Divide & Conquer](#divide--conquer) - **Status:** Pending
    - [Greedy](#greedy) - **Status:** Pending
    - [Dynamic Programming](#dynamic-programming) - **Status:** Pending
@@ -88,7 +88,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 - Move on to more efficient algorithms like merge sort and quick sort.
 
 ### Searching
-- **Status:** Pending
+- **Status:** Completed
 - Understand linear search and binary search.
 - Learn about advanced searching techniques and their applications.
 

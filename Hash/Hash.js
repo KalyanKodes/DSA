@@ -1,6 +1,6 @@
 // A Hash dataStructure also known as Hashmap is used to organize and store data in Key and Value pairs
 // JavaScript had Objects for similar kind of purpose 
-// A hashFunction is used to convert a String to a numeric value to store data in hashTable
+// A hashFunction is used to convert a String of key to a numeric value to store data in hashTable
 // A hashFunciton accepts a key string and converts it to it's hashCode which is within the bounds of Array
 // The same hashFunction is used to retrive the value
 // Operation can perform are: 
