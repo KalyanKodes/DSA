@@ -2,6 +2,8 @@
 
 
 
+// Time complexity is O(n2)
+
 let arr = [9,8,7,6,5,4,3,2,1,0];
 
 console.log(...arr)
@@ -15,7 +17,5 @@ for(let i = 0; i < arr.length; i++){
         }
     }
 }
-
-
 
 console.log(...arr)
