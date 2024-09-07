@@ -16,7 +16,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Matrix/Grid](#matrixgrid) - **Status:** Pending
    - [String](#string) - **Status:** Pending
 2. [Algorithms](#algorithms)
-   - [Sorting](#sorting) - **Status:** Pending
+   - [Sorting](#sorting) - **Status:** Completed
    - [Searching](#searching) - **Status:** Completed
    - [Divide & Conquer](#divide--conquer) - **Status:** Pending
    - [Greedy](#greedy) - **Status:** Pending
@@ -83,8 +83,8 @@ This guide provides a structured approach to learning Data Structures and Algori
 ## Algorithms
 
 ### Sorting
-- **Status:** Pending
-- Start with basic sorting algorithms like bubble sort, insertion sort, and selection sort.
+- **Status:** Completed
+- Start with basic sorting algorithms like bubble sort, insertion sort, selection sort , merge sort and quick sort.
 - Move on to more efficient algorithms like merge sort and quick sort.
 
 ### Searching

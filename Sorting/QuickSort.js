@@ -24,7 +24,7 @@
 // Again we will apply same to the partition for both partitions untill we have one element in partition
 
 // It is not matter the order of elements in partitions
-
+// nlog(n) - Time complixity
 
 console.clear()
 let a = [7,6,10,5,9,2,1,15,7];
@@ -66,4 +66,3 @@ function quickSort(lb , ub){
 
 quickSort(0 , a.length - 1 );
 console.log(...a)
-console.log(a.length)
