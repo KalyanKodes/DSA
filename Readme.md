@@ -21,7 +21,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Divide & Conquer](#divide--conquer) - **Status:** Pending
    - [Greedy](#greedy) - **Status:** Pending
    - [Dynamic Programming](#dynamic-programming) - **Status:** Pending
-   - [Recursion](#recursion) - **Status:** Pending
+   - [Recursion](#recursion) - **Status:** Completed
    - [Backtracking](#backtracking) - **Status:** Pending
    - [Bitwise](#bitwise) - **Status:** Pending
    - [Mathematical](#mathematical) - **Status:** Pending
@@ -108,7 +108,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 - Study common DP problems like knapsack, longest common subsequence, and coin change.
 
 ### Recursion
-- **Status:** Pending
+- **Status:** Completed
 - Understand how to break down problems into simpler sub-problems using recursion.
 - Practice writing recursive functions for problems like factorial and Fibonacci.
 
