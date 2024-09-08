@@ -10,7 +10,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Stack](#stack) - **Status:** Completed
    - [Queue](#queue) - **Status:** Completed
    - [Hash](#hash) - **Status:** Completed
-   - [Heap](#heap) - **Status:** Pending
+   - [Heap](#heap) - **Status:** Completed
    - [Graph](#graph) - **Status:** Pending
    - [Tree](#tree) - **Status:** Pending
    - [Matrix/Grid](#matrixgrid) - **Status:** Pending
@@ -56,7 +56,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 - Understand the use cases of hash maps.
 
 ### Heap
-- **Status:** Pending
+- **Status:** Completed
 - Study binary heaps, their properties, and operations like insertion and deletion.
 - Learn about heap applications such as priority queues.
 
