@@ -10,65 +10,79 @@
 // After deleting the root node we insert the last element as root node of the tree and compare it's child nodes and swap
 // When inserting the tree is modified from bottom to top , but in deleting the tree is modified from top to bottom
 // If we keep storing the deleting elements, and we delete all the elements in the tree then the deleted elements array will be in sorted order
-
 console.clear();
-class Heap{
-    constructor(){
-        this.maxHeap = new Array();
-        this.minHeap = new Array();
-        this.maxHeapRemovedItems = new Array();
-        this.minHeapRemovedItems = new Array();
+class Heap {
+    constructor() {
+        this.maxHeap = [];
+        this.minHeap = [];
+        this.maxHeapRemovedItems = [];
+        this.minHeapRemovedItems = [];
     }
 
-    insertIntoHeap(heap , element , type){
-        heap.push(element);
-        let i = heap.length - 1;
-        while(i > 0){
-            let parentIndex = Math.floor(i / 2) ;
-            if(type === "max" ? heap[parentIndex] < heap[i] : heap[parentIndex] > heap[i]){
-                let temp = heap[parentIndex];
-                heap[parentIndex] = heap[i];
-                heap[i] = temp;
+    // Heapify up to maintain heap property during insert
+    heapifyUp(heap, i, type) {
+        let parentIndex = Math.floor((i - 1) / 2);
+        while (i > 0) {
+            if (type === "max" ? heap[parentIndex] < heap[i] : heap[parentIndex] > heap[i]) {
+                [heap[parentIndex], heap[i]] = [heap[i], heap[parentIndex]]; // Swap
+            } else {
+                break;
             }
-            i = Math.floor(i / 2);
+            i = parentIndex;
+            parentIndex = Math.floor((i - 1) / 2);
         }
     }
-    insertElement(element){
-        this.insertIntoHeap(this.maxHeap , element , "max");
-        this.insertIntoHeap(this.minHeap , element , "min");
+
+    // Insert element into the heap and heapify up
+    insertIntoHeap(heap, element, type) {
+        heap.push(element);
+        this.heapifyUp(heap, heap.length - 1, type);
     }
 
-    removeElement(){
+    insertElement(element) {
+        this.insertIntoHeap(this.maxHeap, element, "max");
+        this.insertIntoHeap(this.minHeap, element, "min");
+    }
+
+    // Heapify down after removing the root
+    heapifyDown(heap, i, type) {
+        const length = heap.length;
+        while (true) {
+            let leftChild = 2 * i + 1;
+            let rightChild = 2 * i + 2;
+            let swapIndex = i;
+
+            if (leftChild < length && (type === "max" ? heap[leftChild] > heap[swapIndex] : heap[leftChild] < heap[swapIndex])) {
+                swapIndex = leftChild;
+            }
+
+            if (rightChild < length && (type === "max" ? heap[rightChild] > heap[swapIndex] : heap[rightChild] < heap[swapIndex])) {
+                swapIndex = rightChild;
+            }
+
+            if (swapIndex === i) break;
+            
+            [heap[i], heap[swapIndex]] = [heap[swapIndex], heap[i]]; // Swap
+            i = swapIndex;
+        }
+    }
+
+    // Remove root element and heapify down
+    removeElement() {
         // For max heap
-        if(this.maxHeap.length > 0){
+        if (this.maxHeap.length > 0) {
             this.maxHeapRemovedItems.push(this.maxHeap[0]);
             this.maxHeap[0] = this.maxHeap[this.maxHeap.length - 1];
-            this.maxHeap.splice(this.maxHeap.length - 1 , 1);
+            this.maxHeap.pop();
+            this.heapifyDown(this.maxHeap, 0, "max");
         }
-        if(this.minHeap.length > 0){
+
+        // For min heap
+        if (this.minHeap.length > 0) {
             this.minHeapRemovedItems.push(this.minHeap[0]);
             this.minHeap[0] = this.minHeap[this.minHeap.length - 1];
-            this.minHeap.splice(this.minHeap.length - 1 , 1);
+            this.minHeap.pop();
+            this.heapifyDown(this.minHeap, 0, "min");
         }
-
     }
 }
-
-let h = new Heap();
-
-h.insertElement(5);
-h.insertElement(4);
-h.insertElement(10);
-h.insertElement(6);
-h.insertElement(1);
-// h.removeElement();
-// h.removeElement();
-// h.removeElement();
-// h.removeElement();
-// h.removeElement();
-console.log(...h.maxHeap)
-console.log(...h.minHeap)
-console.log(...h.maxHeapRemovedItems)
-console.log(...h.minHeapRemovedItems)
-
-
