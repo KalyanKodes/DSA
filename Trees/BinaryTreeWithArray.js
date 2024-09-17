@@ -75,7 +75,6 @@ nodesArr.push(nodeRef)
 for(let i = 1; i < nodes.length; i++){
     let parentNode = Math.floor((i - 1) / 2);
     let nodeRef = bt.insertNode(nodesArr[parentNode] , nodes[i])
-    // console.log(nodeRef)
     nodesArr.push(nodeRef)
 }
 

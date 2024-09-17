@@ -28,10 +28,7 @@
 // The smallest node in right subTree of the node we want to delete will take the position of node to deleted.
 
 
-
-
-
-console.clear();
+console.clear()
 
 class Node{
     constructor(data){
@@ -41,81 +38,115 @@ class Node{
     }
 }
 
-
+// No duplication
 class BinarySearchTree{
     constructor(){
         this.root = null;
     }
 
-
-    #findNode(node , value){
+    #findNode(node , data){
         if(node){
-            if(value <= node.data && node.left){
-                return this.#findNode(node.left , value)
-            }
-            else if(value > node.data && node.right){
-                return this.#findNode(node.right , value)
-            }
+            if(data === node.data) return null;
+            else if(data < node.data && node.left) return this.#findNode(node.left , data);
+            else if(data > node.data && node.right) return this.#findNode(node.right , data);
             return node;
         }
     }
 
-    insertNode(value){
-        let newNode = new Node(value);
-        if(this.root == null){
-            this.root = newNode;
+    insertNode(data){
+        let newNode = new Node(data);
+        if(this.root === null) this.root = newNode;
+        else{
+            let nodeToInsert = this.#findNode(this.root , data);
+            if(nodeToInsert){
+                if(data < nodeToInsert.data) nodeToInsert.left = newNode;
+                else nodeToInsert.right = newNode;
+            }
+            else{
+                console.log("Element already in tree")
+            }
+        }
+     }
+     
+    delete(data){
+        this.root = this.#deleteNode(data , this.root);
+    }
+
+
+     #deleteNode(data, node){
+        if(!this.root){
+            console.log("Tree is Empty");
+            return
+        }
+        if(!node){
+            console.log(`${data} not found in Tree`)
             return;
         }
 
-        let nodeToInsert = this.#findNode(this.root , value);
-        if(value <= nodeToInsert.data){
-            nodeToInsert.left = newNode;
+        if(data < node.data){
+            node.left = this.#deleteNode(data, node.left);
+        }
+        else if(data > node.data){
+            node.right = this.#deleteNode(data , node.right);
         }
         else{
-            nodeToInsert.right = newNode;
+            // Case 1: No child
+            if(!node.left && !node.right) {
+                return null
+            }
+            // Case 2: One Child
+            if(!node.left) {
+                return node.right
+            }
+            else if(!node.right) return node.left
+            // Case 3: Two childs
+            // Taking inorderSucessor (Minimum of right Sub-tree)
+            let minNode = this.#findMinNode(node.right);
+            node.data = minNode.data;
+            node.right = this.#deleteNode(minNode.data , node.right);
         }
-    }
+        return node;
+     }
 
-    inOrder(node = this.root){
+     #findMinNode(node){
+        while(node.left){
+            node = node.left
+        }
+        return node;
+     }
+
+
+     #inOrder(node = this.root){
         if(node){
-            this.inOrder(node.left);
+            this.#inOrder(node.left)
             process.stdout.write(`${node.data} `);
-            this.inOrder(node.right)
+            this.#inOrder(node.right)
         }
-    }
-
-
-    preOrder(node = this.root){
+     }
+     #preOrder(node = this.root){
         if(node){
             process.stdout.write(`${node.data} `);
-            this.preOrder(node.left);
-            this.preOrder(node.right)
+            this.#preOrder(node.left)
+            this.#preOrder(node.right)
         }
-    }
-    
-    postOrder(node = this.root){
+     }
+     #postOrder(node = this.root){
         if(node){
-            this.postOrder(node.left);
-            this.postOrder(node.right)
+            this.#postOrder(node.left)
+            this.#postOrder(node.right)
             process.stdout.write(`${node.data} `);
         }
-    }
+     }
 
+
+     allTraversals(){
+        process.stdout.write("Inorder: ")
+        this.#inOrder()
+        process.stdout.write("\nPreorder: ")
+        this.#preOrder();
+        process.stdout.write("\nPostorder: ")
+        this.#postOrder()  
+     }
 }
 
-
-let bst = new BinarySearchTree();
-
-let arr = [11, 6, 8, 19, 4, 10, 5, 17, 43, 49, 31];
-
-arr.forEach((item)=>{
-    bst.insertNode(item);
-})
-
-process.stdout.write("Inorder: ")
-bst.inOrder();
-process.stdout.write("\nPreOrder: ")
-bst.preOrder();
-process.stdout.write("\nPostOrder: ")
-bst.postOrder();
 
