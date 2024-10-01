@@ -1,6 +1,6 @@
 // Arrays
 
-// Arrays in programmin language are the collection of elements in one place, where the accessing of each element is based on Index value which starts from 0 to n-1.
+// Arrays in programming language are the collection of elements in one place, where the accessing of each element is based on Index value which starts from 0 to n-1.
 
 // Sizes of DataTypes in JS and C
 
