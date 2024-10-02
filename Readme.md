@@ -15,7 +15,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Tree](#tree) - **Status:** Pending
    - [Matrix/Grid](#matrixgrid) - **Status:** Pending
    - [String](#string) - **Status:** Pending
-   - [Trie](#trie) - **Status:** Pending
+   - [Trie](#trie) - **Status:** Completed
 2. [Algorithms](#algorithms)
    - [Sorting](#sorting) - **Status:** Completed
    - [Searching](#searching) - **Status:** Completed
