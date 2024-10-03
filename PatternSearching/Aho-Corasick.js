@@ -80,7 +80,7 @@ class AutoMeta{
         temp.words.push(word);
     }
 
-    findProperSufix(string){
+    #findProperSufix(string){
         if(string == " " || string.length == 1){
             return [" "];
         }
@@ -92,7 +92,7 @@ class AutoMeta{
         return sufixs;
     }
 
-    findPrefixNode(sequence){
+    #findPrefixNode(sequence){
         if(sequence === " "){
             return this.root;
         }
@@ -109,16 +109,16 @@ class AutoMeta{
 
     setChildsLink(node , wordSequence){
         if(node.isEnded){
-            // console.log(node.words.toString() , "\n")
+            // console.log(node.words.toString() , "\n")        
             return;
         }
         node.words.forEach((item)=>{
             let sequence = wordSequence + item
             let index = item.charCodeAt(0) - 97;
-            let $sufix = this.findProperSufix(sequence);
+            let $sufix = this.#findProperSufix(sequence);
             // console.log(`Proper suffix for sequence:`,sequence , $sufix)
             for(let sfx = 0; sfx < $sufix.length; sfx++){
-                let prefixNode = this.findPrefixNode($sufix[sfx]);
+                let prefixNode = this.#findPrefixNode($sufix[sfx]);
                 if(prefixNode){
                     // console.log("Found prefix node for suffix" , $sufix[sfx] , prefixNode.words)
                     node.referenceArr[index].failureLink = prefixNode;
@@ -179,6 +179,3 @@ let trieTree = new AutoMeta();
 dictionary.forEach((root) => trieTree.insert(root));
 trieTree.setFailureLink();
 trieTree.search(sentence);
-
-
-
