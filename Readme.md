@@ -155,7 +155,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 
 ### Pattern Searching
 
-- **Status:** Pending
+- **Status:** Completed
 - Study string pattern matching algorithms like KMP, Rabin-Karp, and Boyer-Moore.
 - Understand the applications of these algorithms in text processing.
 
