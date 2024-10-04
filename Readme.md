@@ -26,7 +26,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Backtracking](#backtracking) - **Status:** Pending
    - [Bitwise](#bitwise) - **Status:** Pending
    - [Mathematical](#mathematical) - **Status:** Pending
-   - [Pattern Searching](#pattern-searching) - **Status:** Pending
+   - [Pattern Searching](#pattern-searching) - **Status:** Completed
 
 ## Data Structures
 
