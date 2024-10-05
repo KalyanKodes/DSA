@@ -1,14 +1,40 @@
-/**
- * Trie data structure, also known as a prefix tree or digital search tree,
- * is used for storing a dynamic set of strings, where each node represents a character.
- * It is particularly useful for tasks such as autocomplete and spell checking.
- * 
- * Key Properties:
- * - A Trie is a K-ary tree, meaning each node can have multiple children (not limited to two like in a binary tree).
- * - It allows efficient retrieval of words based on their prefixes.
- * - The time complexity for searching, inserting, or prefix-checking a word is O(m), 
- *   where m is the length of the word, regardless of the number of words stored in the Trie.
- */
+/*
+    Overview:
+    - A Trie, also known as a prefix tree or digital search tree, is a specialized tree-like data structure used for storing a dynamic set of strings.
+    - Each node in a Trie represents a character of the string, allowing for efficient storage and retrieval based on prefixes.
+
+    Key Points:
+    - A Trie is a K-ary tree, meaning each node can have multiple children, which is not limited to two like in a binary tree.
+    - It allows for efficient retrieval of words based on their prefixes.
+    
+    Features:
+    - Supports dynamic set of strings, providing efficient search, insertion, and prefix-checking operations.
+    - The time complexity for searching, inserting, or prefix-checking a word is O(m), where m is the length of the word, regardless of the number of words stored in the Trie.
+
+    Operations and their Time Complexity:
+    1. Insertion: O(m)
+    2. Search: O(m)
+    3. StartsWith (prefix check): O(m)
+
+    Space Complexity: O(n * m), where n is the number of words and m is the maximum length of a word.
+
+    Why We Use It:
+    - Tries are particularly useful for tasks such as autocomplete and spell checking, where quick retrieval of words based on prefixes is essential.
+
+    Applications:
+    - Autocomplete systems.
+    - Spell checking algorithms.
+    - IP routing and dictionary implementations.
+
+    Advantages:
+    - Fast retrieval times for prefix-based queries.
+    - Efficient storage of a dynamic set of strings.
+
+    Disadvantages:
+    - Higher memory consumption due to the overhead of storing multiple pointers.
+    - Complexity increases with the number of strings and their lengths.
+
+*/
 
 class TrieNode {
     constructor() {
@@ -25,10 +51,10 @@ class Trie {
         this.root = new TrieNode();
     }
 
-    /**
-     * Inserts a word into the Trie.
-     * @param {string} word - The word to be inserted.
-     */
+    /*
+        Insert a word into the Trie.
+        Time Complexity: O(m)
+    */
     insert(word) {
         let triePointer = this.root; // Start at the root node.
         for (let i = 0; i < word.length; i++) {
@@ -45,11 +71,11 @@ class Trie {
         triePointer.isEnded = true;
     }
 
-    /**
-     * Searches for a word in the Trie.
-     * @param {string} word - The word to be searched.
-     * @return {boolean} - Returns true if the word exists, false otherwise.
-     */
+    /*
+        Search for a word in the Trie.
+        Returns true if the word exists, false otherwise.
+        Time Complexity: O(m)
+    */
     search(word) {
         let triePointer = this.root; // Start at the root node.
         for (let i = 0; i < word.length; i++) {
@@ -65,11 +91,11 @@ class Trie {
         return triePointer.isEnded;
     }
 
-    /**
-     * Checks if there is any word in the Trie that starts with the given prefix.
-     * @param {string} prefix - The prefix to be checked.
-     * @return {boolean} - Returns true if any word starts with the prefix, false otherwise.
-     */
+    /*
+        Check if any word in the Trie starts with the given prefix.
+        Returns true if the prefix exists, false otherwise.
+        Time Complexity: O(m)
+    */
     startsWith(prefix) {
         let triePointer = this.root; // Start at the root node.
         for (let i = 0; i < prefix.length; i++) {

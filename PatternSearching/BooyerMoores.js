@@ -1,5 +1,47 @@
-// Boyer-Moore Voting Algorithm to find the majority element in an array
-// A majority element is defined as an element occurring more than n/2 times where n is the size of the array.
+/*
+ * Boyer-Moore Voting Algorithm
+ * ----------------------------
+ * Overview:
+ * The Boyer-Moore Voting Algorithm is an efficient algorithm to find the majority element in an array, where a majority element is defined as an element that occurs more than n/2 times (n being the size of the array). This algorithm is optimal with O(n) time complexity and O(1) space complexity.
+ *
+ * Time Complexity: O(n)
+ * - The algorithm scans the array twice: once to find the candidate and once to verify it.
+ *
+ * Space Complexity: O(1)
+ * - The algorithm uses only a few extra variables, which makes it a constant space algorithm.
+ *
+ * Key Points:
+ * - **Candidate Selection**: The first pass selects a candidate for the majority element.
+ * - **Vote Counting**: If an element matches the candidate, increment the vote count; otherwise, decrement it.
+ * - **Verification**: The second pass verifies if the selected candidate occurs more than n/2 times.
+ *
+ * Features:
+ * - Linear time complexity makes it efficient for large datasets.
+ * - Constant space usage ensures minimal memory overhead.
+ *
+ * Operations:
+ * - Find Candidate: Determine the potential majority element by iterating over the array.
+ * - Verify Candidate: Confirm if the candidate is indeed the majority element by counting its occurrences.
+ *
+ * Why We Use It:
+ * The Boyer-Moore Voting Algorithm is particularly useful in situations where we need to find the majority element in large datasets without using additional memory.
+ *
+ * Real-World Example:
+ * In election results, if we need to determine if a candidate has received more than 50% of the total votes, the Boyer-Moore Voting Algorithm can efficiently identify that candidate without requiring extra space.
+ *
+ * Applications:
+ * - **Election Results**: Finding the winning candidate who has received more than 50% of the votes.
+ * - **Social Media Analysis**: Identifying dominant opinions or sentiments in large datasets of user comments.
+ * - **Market Research**: Determining the most popular product or brand from customer reviews or feedback.
+ *
+ * Advantages:
+ * - Linear time complexity, O(n), makes it efficient for large datasets.
+ * - Constant space usage, O(1), ensures low memory consumption.
+ *
+ * Disadvantages:
+ * - The algorithm only works if a majority element exists (i.e., an element that appears more than n/2 times).
+ * - A second pass is required to verify if the candidate is a true majority.
+ */
 
 // Function to find the majority element
 function findMajority(arr) {
@@ -44,13 +86,10 @@ function findMajority(arr) {
 
 // Example usage of the function
 console.log(findMajority([2, 3, 4, 3, 3])); // Output: No element found greater than n/2
+console.log(findMajority([3, 3, 4, 2, 3, 3, 3])); // Output: 3
 
-// Time Complexity:
-// - The algorithm runs in O(n) time, where n is the number of elements in the array.
-// - The first pass to find the candidate takes O(n).
-// - The second pass to count occurrences also takes O(n).
-// - Therefore, the total time complexity is O(n).
-
-// Space Complexity:
-// - The algorithm uses O(1) space since it only requires a few variables (majority and votes) regardless of the input size.
-// - No additional data structures are used that depend on the input size, leading to constant space usage.
+/*
+ * Example Explanation:
+ * - In the first example, no element appears more than n/2 times (n = 5, so n/2 = 2.5), so the output is "No element found".
+ * - In the second example, the element "3" appears 5 times, which is more than n/2 (n = 7, so n/2 = 3.5), so the output is "3".
+ */

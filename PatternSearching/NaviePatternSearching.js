@@ -1,92 +1,107 @@
 /**
- * Pattern Searching is a technique to find all occurrences of a given pattern (substring) 
- * within a larger text (string). It's an important task in string processing and has many applications 
- * like searching in texts, DNA sequence analysis, text editing tools, etc.
- *
- * The Naive Pattern Searching algorithm is the simplest approach to pattern searching.
- * It works by checking every possible position in the text to see if the pattern matches
- * the substring starting from that position.
- *
- * How Naive Pattern Searching Works:
- * - For each starting index of the text, compare the pattern with the substring starting at that index.
- * - If the pattern matches at the current index, return the result.
- * - Otherwise, shift the pattern by one position to the right and repeat the process.
- * - Continue until the end of the text is reached.
- *
+ * Naive Pattern Searching Algorithm
+ * 
+ * Overview:
+ * - The Naive Pattern Searching algorithm finds all occurrences of a pattern (substring)
+ *   within a larger text (string) by checking every possible position.
+ * 
+ * Key Features:
+ * - Simple implementation that compares the pattern with each substring in the text.
+ * - Checks each character one by one to verify a match.
+ * 
+ * Operations Performed:
+ * - Loop through each character in the text while comparing with the pattern.
+ * - If a mismatch occurs, shift the pattern one position to the right.
+ * 
  * Time Complexity:
- * - In the worst case, the time complexity is O(m * n), where 'm' is the length of the pattern 
- *   and 'n' is the length of the text.
- * - This happens when the algorithm checks every possible starting position.
+ * - Worst case: O(m * n), where 'm' is the length of the pattern and 'n' is the length of the text.
+ * - Best case: O(n), when the pattern is found at the beginning of the text.
  * 
  * Space Complexity:
- * - O(1), as no additional space is used except for pointers.
+ * - O(1), as it only uses a few pointers and a flag.
+ * 
+ * Advantages:
+ * - Easy to implement and understand.
+ * 
+ * Disadvantages:
+ * - Inefficient for large texts and patterns as it checks each position exhaustively.
+ * 
+ * Real-World Examples:
+ * - Text editing tools that allow find and replace functionality.
+ * - Simple search functionality in small databases.
+ * 
+ * Applications:
+ * - DNA sequence analysis for locating specific sequences.
+ * - String searching in text documents and web pages.
  */
 
+// Class for implementing the Naive Pattern Searching algorithm
 class Solution {
     /**
-     * This function searches for a pattern in a given text using the Naive Pattern Searching algorithm.
+     * Function to search for the pattern in the given text.
      * 
-     * @param {string} str - The text in which we are searching for the pattern.
-     * @param {string} pat - The pattern to search for in the text.
-     * @returns {boolean} - Returns true if the pattern is found in the text, otherwise false.
+     * Overview:
+     * - This function searches for occurrences of a specified pattern in a given text.
+     *
+     * Parameters:
+     * - str: The text in which the pattern needs to be searched.
+     * - pat: The pattern to search for in the text.
+     * - Returns: true if the pattern is found, otherwise returns false.
      */
     searchPattern(str, pat) {
-        // Initialize the starting point of the current window of text
-        let low = 0;
+        // Step 1: Initialize pointers for the current window in the text
+        let low = 0;  // Start index of the current window in the text
+        let high = pat.length - 1;  // End index of the current window (length of the pattern)
 
-        // Initialize the ending point of the current window (end of the pattern in the text)
-        let high = pat.length - 1;
-
-        // Loop through the text until the window reaches the end of the text
+        // Step 2: Loop through the text until the window reaches the end of the text
         while (high < str.length) {
-            let stPointer = low;            // Pointer to traverse the current window of the text
-            let patPointer = 0;             // Pointer to traverse the pattern
+            let stPointer = low;  // Pointer to traverse the current window in the text
+            let patPointer = 0;   // Pointer to traverse the pattern
 
-            let flag = true;                // Flag to check if pattern matches
+            let flag = true;  // Flag to check if the pattern matches the current window
 
-            // Compare each character of the current window of text with the pattern
+            // Step 3: Compare characters of the pattern with the current window in the text
             while (stPointer <= high) {
                 if (str[stPointer] !== pat[patPointer]) {
-                    // If any character does not match, set flag to false and break
+                    // Step 4: If any character doesn't match, set flag to false and break
                     flag = false;
                     break;
                 }
-                // Move to the next character in both text window and pattern
+                // Step 5: Move both pointers forward if characters match
                 stPointer++;
                 patPointer++;
             }
 
-            // If all characters matched, return true (pattern found)
+            // Step 6: If the pattern matches completely, return true (pattern found)
             if (flag) {
                 return true;
             }
 
-            // Slide the window by one position (move both low and high pointers)
+            // Step 7: Slide the window by one position in the text
             low++;
             high++;
         }
 
-        // If no match is found after checking all windows, return false
+        // Step 8: If no match is found, return false
         return false;
     }
 }
 
 /**
- * Example usage:
- * 
+ * Example:
  * Text: "AABAACAADAABAABA"
  * Pattern: "AABA"
  * 
- * In this example, the Naive Pattern Searching algorithm will slide the pattern over the text 
- * and check each possible position. It will return true if a match is found.
+ * The Naive Pattern Searching algorithm will check each possible window in the text to find the pattern.
+ * In this example, the pattern "AABA" is found at index 0, 9, and 12 in the text.
  */
 
 // Creating an instance of the Solution class
 const solution = new Solution();
 
 // Test case
-const text = "AABAACAADAABAABA";  // Text in which we are searching
-const pattern = "AABA";           // Pattern to search for
+const text = "AABAACAADAABAABA";  // The text in which we search for the pattern
+const pattern = "AABA";           // The pattern to search for
 
-// Call the function and log the result
-console.log(solution.searchPattern(text, pattern) ? "Pattern Found" : "No Pattern Found");  // Output: true (pattern found at index 0, 9, 12)
+// Calling the function and printing the result
+console.log(solution.searchPattern(text, pattern) ? "Pattern Found" : "No Pattern Found");  // Output: Pattern Found

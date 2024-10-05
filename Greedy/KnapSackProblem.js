@@ -1,46 +1,53 @@
 /*
  * KnapSack Problem
  * ----------------
- * The KnapSack problem is a classic optimization problem that aims to determine 
- * the maximum value of items that can be placed in a bag without exceeding its capacity. 
- * Given the weights and profits of items, the goal is to maximize profit while 
- * keeping the total weight within the bag's size limit.
+ * Overview:
+ * ---------
+ * The KnapSack problem is a classic optimization problem where the objective is to 
+ * maximize the total value of items placed in a knapsack (bag) without exceeding 
+ * its weight capacity. Each item has a specific weight and profit, and you need 
+ * to decide the fraction of the item to include in the knapsack (for fractional knapsack). 
+ * This version of the algorithm uses a greedy approach, focusing on selecting 
+ * the item with the highest profit-to-weight ratio at each step.
  * 
- * Time Complexity: O(n^2)
- * Where:
- *  - n is the number of items.
+ * Advantages:
+ * ----------
+ * - The algorithm is simple and efficient for solving fractional KnapSack problems.
+ * - It provides an optimal solution for fractional cases due to the greedy approach.
+ * 
+ * Disadvantages:
+ * --------------
+ * - The greedy method is not applicable for the 0/1 KnapSack problem (where items 
+ *   cannot be divided); it may lead to suboptimal results in such cases.
+ * - It requires sorting or recalculating profit-to-weight ratios repeatedly, which 
+ *   can be inefficient for very large datasets.
+ * 
+ * Operations:
+ * -----------
+ * - **Profit Per Unit Calculation**: Compute the profit-to-weight ratio for each item.
+ * - **Finding Maximum Profit**: Select the item with the highest ratio that fits in 
+ *   the remaining capacity.
+ * - **Bag Capacity Update**: Update the knapsack capacity as items (or fractions of items) 
+ *   are included.
+ * 
+ * Time Complexity: O(n log n)
+ * - Where n is the number of items.
  * 
  * Space Complexity: O(n)
- * Where:
- *  - n is the number of items.
+ * - Where n is the number of items.
  * 
- * Steps of the Algorithm:
- * 1. **Profit per Unit Calculation**:
- *    - For each item, calculate the profit per unit weight and store it in an array.
- * 
- * 2. **Finding Maximum Profit**:
- *    - In each iteration, find the item with the highest profit per unit that can still fit 
- *      in the remaining capacity of the bag.
- * 
- * 3. **Update Bag Capacity**:
- *    - If the entire item can be added, set its corresponding entry in the solution array 
- *      to 1 (indicating full inclusion). If only a fraction can fit, update the entry 
- *      with the fraction and set the remaining bag capacity to zero.
- * 
- * Usage of the KnapSack Algorithm:
+ * Real-World Examples:
+ * --------------------
  * - Budgeting and resource allocation problems.
  * - Resource management in computing systems.
  * - Investment portfolio optimization.
  * 
- * Key Concepts:
- * - **Greedy Approach**: This algorithm employs a greedy strategy by always choosing 
- *   the next item with the highest profit-to-weight ratio, leading to a suboptimal solution 
- *   for the 0/1 knapsack problem.
- * 
- * Example Use Case:
- * Suppose we have items with profits [10, 5, 15, 7, 6, 18, 3] and weights [2, 3, 5, 7, 1, 4, 1]. 
- * With a bag capacity of 15, the algorithm will determine the best combination of items 
- * to maximize profit.
+ * Applications:
+ * -------------
+ * - Used in logistics for load optimization.
+ * - Helps in financial decision-making to maximize return on investments.
+ * - Employed in the field of computer science for memory management and resource 
+ *   allocation.
  */
 
 class KnapSack {

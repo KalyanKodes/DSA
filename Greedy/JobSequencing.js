@@ -1,40 +1,42 @@
 /*
  * Job Sequencing Problem
  * ----------------------
- * The Job Sequencing Problem is a scheduling problem where we are given a set of jobs,
- * each with a profit and a deadline, and the objective is to schedule the jobs to maximize
- * the total profit while ensuring that no jobs overlap their deadlines.
+ * Overview:
+ * The Job Sequencing Problem is a scheduling problem that aims to schedule a set of jobs, 
+ * each with a specified profit and deadline, in such a way that maximizes the total profit 
+ * while ensuring that no jobs overlap their deadlines.
+ *
+ * Advantages:
+ * - Maximizes profit by prioritizing jobs based on their profitability and deadlines.
+ * - Efficiently utilizes available time slots.
  * 
+ * Disadvantages:
+ * - The solution may not be optimal if jobs cannot be rescheduled.
+ * - The greedy approach may not always yield the best overall scheduling when jobs have 
+ *   interdependencies or complex deadlines.
+ *
+ * Operations:
+ * - Schedule jobs based on their deadlines and profits.
+ * - Calculate total profit based on allocated jobs.
+ *
  * Time Complexity: O(n^2)
  * Where:
  *  - n is the number of jobs.
  * 
  * Space Complexity: O(n)
  * Where:
- *  - n is the number of time slots.
- * 
- * Steps of the Algorithm:
- * 1. **Max Slot Calculation**:
- *    - Determine the maximum slot (deadline) for the jobs.
- * 
- * 2. **Job Allocation**:
- *    - Allocate each job to the latest possible slot before its deadline.
- *    - If a slot is already occupied, attempt to allocate it to an earlier available slot.
- * 
- * 3. **Profit Calculation**:
- *    - Sum the profits of the jobs successfully allocated in the time slots.
- * 
- * Usage of the Job Sequencing Algorithm:
- * - Job scheduling in manufacturing.
- * - Project scheduling to maximize profit.
- * - Efficient task prioritization with deadlines.
- * 
- * Key Concepts:
- * - **Greedy Approach**: The algorithm uses a greedy strategy to always allocate jobs to the latest available slot.
- * 
- * Example Use Case:
- * Suppose we have jobs with profits [35, 30, 25, 20, 5] and deadlines [3, 4, 4, 2, 3]. 
- * The algorithm will determine the best sequence to maximize the profit without exceeding the deadlines.
+ *  - n is the number of time slots created for scheduling jobs.
+ *
+ * Real-World Examples:
+ * - Job scheduling in manufacturing processes to maximize productivity.
+ * - Task prioritization in project management where tasks have specific deadlines and 
+ *   profit implications.
+ *
+ * Applications:
+ * - Used in job scheduling algorithms in operating systems.
+ * - Applicable in resource allocation problems where profit maximization is critical.
+ * - Relevant in finance for project bidding and selection based on profit margins and 
+ *   timelines.
  */
 
 class JobSequence {
@@ -46,7 +48,7 @@ class JobSequence {
 
     findMaxSlot(slots) {
         // Find the maximum slot value (deadline) among the jobs
-        let maxSlot = slots[0];
+        let maxSlot = slots[0]; // Initialize maxSlot with the first slot value
         for (let i = 0; i < slots.length; i++) {
             maxSlot = Math.max(maxSlot, slots[i]); // Update max slot if a larger deadline is found
         }
@@ -75,7 +77,7 @@ class JobSequence {
 
     calculateProfit(timeSlots) {
         // Calculate the total profit from the jobs allocated to the time slots
-        let profit = 0;
+        let profit = 0; // Initialize profit to zero
         for (let i = 0; i < timeSlots.length; i++) {
             if (timeSlots[i] !== null) { // If a job was allocated to this time slot
                 profit += this.profits[timeSlots[i]]; // Add the job's profit to the total profit
@@ -86,8 +88,8 @@ class JobSequence {
 }
 
 // Example usage
-let profits = [35, 30, 25, 20, 5];
-let slots = [3, 4, 4, 2, 3];
+let profits = [35, 30, 25, 20, 5]; // Define job profits
+let slots = [3, 4, 4, 2, 3]; // Define job deadlines
 
-let jsq = new JobSequence(profits, slots);
+let jsq = new JobSequence(profits, slots); // Create an instance of JobSequence
 console.log(jsq.maxProfit); // Output the maximum profit
