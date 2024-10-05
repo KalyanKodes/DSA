@@ -1,120 +1,122 @@
 /*
- * KnapSack Problem (Fractional Knapsack)
- * ----------------------------------------
- * The KnapSack problem is a well-known optimization problem that involves selecting items with
- * given weights and profits to maximize the total profit within a specified weight capacity.
- * The Fractional Knapsack variant allows breaking items to fill the knapsack to maximize profit.
+ * KnapSack Problem
+ * ----------------
+ * The KnapSack problem is a classic optimization problem that aims to determine 
+ * the maximum value of items that can be placed in a bag without exceeding its capacity. 
+ * Given the weights and profits of items, the goal is to maximize profit while 
+ * keeping the total weight within the bag's size limit.
  * 
- * Time Complexity: O(n log n)
+ * Time Complexity: O(n^2)
  * Where:
- *  - n is the number of items, due to the sorting of items based on profit per unit weight.
+ *  - n is the number of items.
  * 
  * Space Complexity: O(n)
  * Where:
- *  - n is the space used for storing profit per unit and the selected items.
+ *  - n is the number of items.
  * 
  * Steps of the Algorithm:
- * 1. **Calculate Profit per Unit**:
+ * 1. **Profit per Unit Calculation**:
  *    - For each item, calculate the profit per unit weight and store it in an array.
  * 
- * 2. **Sort Items**:
- *    - Sort items based on the calculated profit per unit weight in descending order.
+ * 2. **Finding Maximum Profit**:
+ *    - In each iteration, find the item with the highest profit per unit that can still fit 
+ *      in the remaining capacity of the bag.
  * 
- * 3. **Select Items**:
- *    - Traverse through the sorted list of items and keep adding items to the knapsack until it is full.
- *    - If an entire item can be added, add it completely; if not, add a fraction of it.
+ * 3. **Update Bag Capacity**:
+ *    - If the entire item can be added, set its corresponding entry in the solution array 
+ *      to 1 (indicating full inclusion). If only a fraction can fit, update the entry 
+ *      with the fraction and set the remaining bag capacity to zero.
  * 
  * Usage of the KnapSack Algorithm:
- * - Resource allocation where resources are limited.
- * - Budget management in project selection.
- * - Portfolio selection in finance.
+ * - Budgeting and resource allocation problems.
+ * - Resource management in computing systems.
+ * - Investment portfolio optimization.
  * 
  * Key Concepts:
- * - **Greedy Approach**: This algorithm employs a greedy strategy by always choosing the item with the highest
- *   profit-to-weight ratio available at each step.
- * - **Fractional Capacity**: Unlike the 0/1 knapsack, the fractional variant allows splitting items.
+ * - **Greedy Approach**: This algorithm employs a greedy strategy by always choosing 
+ *   the next item with the highest profit-to-weight ratio, leading to a suboptimal solution 
+ *   for the 0/1 knapsack problem.
  * 
  * Example Use Case:
- * Given a list of items with profits [10, 5, 15, 7, 6, 18, 3] and weights [2, 3, 5, 7, 1, 4, 1],
- * with a knapsack capacity of 15, the algorithm will compute the maximum profit achievable
- * by selecting a combination of items that optimally fills the knapsack.
+ * Suppose we have items with profits [10, 5, 15, 7, 6, 18, 3] and weights [2, 3, 5, 7, 1, 4, 1]. 
+ * With a bag capacity of 15, the algorithm will determine the best combination of items 
+ * to maximize profit.
  */
 
 class KnapSack {
     constructor(profits, weights, bagSize) {
-        this.bagSize = bagSize;  // Total capacity of the knapsack
-        this.profits = profits;  // Array of profits for each item
-        this.weights = weights;  // Array of weights for each item
-        this.profitsPerUnit = new Array(this.profits.length).fill(-1);  // Profit per unit for each item
-        this.x = new Array(this.profits.length).fill(0);  // Fraction of each item included in the knapsack
-        this.computeKnapSack();  // Start computation for maximizing profit
+        this.bagSize = bagSize; // Initialize the bag size
+        this.profits = profits; // Store item profits
+        this.weights = weights; // Store item weights
+        this.profitsPerUnit = new Array(this.profits.length).fill(-1); // Array for profit per unit
+        this.x = new Array(this.profits.length).fill(0); // Array to store item inclusion
+        this.computeKnapSack(); // Compute the optimal solution
     }
 
-    // Calculate profit per unit weight for each item
     findProfitPerUnit() {
+        // Calculate profit per unit weight for each item
         for (let i = 0; i < this.profits.length; i++) {
-            this.profitsPerUnit[i] = (this.profits[i] / this.weights[i]);  // Compute profit per unit weight
+            this.profitsPerUnit[i] = (this.profits[i] / this.weights[i]);
         }
     }
 
-    // Find the item with the maximum profit per unit weight
     findMaxProfit() {
-        let max = [this.profitsPerUnit[0], 0];  // Initialize max with the first item's profit per unit
+        // Find the item with the maximum profit per unit weight
+        let max = [this.profitsPerUnit[0], 0];
         for (let i = 1; i < this.profitsPerUnit.length; i++) {
-            if (max[0] < this.profitsPerUnit[i]) {  // Update max if a higher profit per unit is found
-                max = [this.profitsPerUnit[i], i];  // Update max and index
+            if (max[0] < this.profitsPerUnit[i]) {
+                max = [this.profitsPerUnit[i], i];
             }
         }
-        this.profitsPerUnit[max[1]] = -1;  // Mark this item as used
-        return max;  // Return max profit and index
+        this.profitsPerUnit[max[1]] = -1; // Mark this item as processed
+        return max; // Return the max profit and its index
     }
 
-    // Main function to compute the maximum profit possible in the knapsack
     computeKnapSack() {
-        this.findProfitPerUnit();  // Calculate profit per unit weights
-        let i = 0;  // Index for traversing items
+        this.findProfitPerUnit(); // Calculate profit per unit
+        let i = 0; // Counter for items
         while (i < this.profits.length) {
-            if (this.bagSize == 0) {  // Check if the bag is full
-                break;  // Exit if the bag is full
+            if (this.bagSize == 0) { // Check if the bag is full
+                break; // Exit if no capacity left
             }
-            let [max, index] = this.findMaxProfit();  // Get the item with max profit per unit
-            let weight = this.weights[index];  // Get the weight of that item
-            if (this.bagSize > weight) {  // Check if the full item can be added
-                this.x[index] = 1;  // Add full item to knapsack
-                this.bagSize -= weight;  // Decrease remaining bag size
-            } else {
-                this.x[index] = (this.bagSize / weight);  // Add a fraction of the item
-                this.bagSize = 0;  // Knapsack is now full
+            let [max, index] = this.findMaxProfit(); // Find the max profit item
+            let weight = this.weights[index]; // Get the weight of the item
+            if (this.bagSize > weight) { // Check if the entire item can fit
+                this.x[index] = 1; // Include the full item
+                this.bagSize -= weight; // Decrease the bag capacity
+            } else { // Only a fraction can fit
+                this.x[index] = (this.bagSize / weight); // Store the fraction
+                this.bagSize = 0; // Bag is now full
             }
-            i++;  // Move to the next item
+            i++; // Move to the next item
         }
     }
 
-    // Calculate total profit earned from the items included in the knapsack
     getProfitEarned() {
-        let profit = 0;  // Initialize profit
+        // Calculate the total profit earned from included items
+        let profit = 0;
         for (let i = 0; i < this.x.length; i++) {
-            profit += (this.profits[i] * this.x[i]);  // Compute total profit
+            profit += (this.profits[i] * this.x[i]); // Sum profits of included items
         }
-        return profit;  // Return total profit earned
+        return profit; // Return total profit
     }
 
-    // Calculate the total weight of items included in the knapsack
     getMaxCapacityFilled() {
-        let weight = 0;  // Initialize weight
+        // Calculate the total weight of items included in the bag
+        let weight = 0;
         for (let i = 0; i < this.x.length; i++) {
-            weight += (this.weights[i] * this.x[i]);  // Compute total weight
+            weight += (this.weights[i] * this.x[i]); // Sum weights of included items
         }
-        return weight;  // Return total weight filled
+        return weight; // Return total weight
     }
 }
 
-// Example Usage
-let profits = [10, 5, 15, 7, 6, 18, 3];  // Profits of items
-let weights = [2, 3, 5, 7, 1, 4, 1];  // Weights of items
-let bagSize = 15;  // Total capacity of the knapsack
+// Example usage
+let profits = [10, 5, 15, 7, 6, 18, 3];
+let weights = [2, 3, 5, 7, 1, 4, 1];
+let bagSize = 15;
 
-let knp = new KnapSack(profits, weights, bagSize);  // Create an instance of KnapSack
+let knp = new KnapSack(profits, weights, bagSize);
 
-console.log(knp.getProfitEarned());  // Output the total profit earned
-console.log(knp.getMaxCapacityFilled());  // Output the total weight filled
+console.log(knp.getProfitEarned()); // Output the total profit earned
+console.log(knp.getMaxCapacityFilled()); // Output the total weight in the bag
