@@ -11,7 +11,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Queue](#queue) - **Status:** Completed
    - [Hash](#hash) - **Status:** Completed
    - [Heap](#heap) - **Status:** Completed
-   - [Graph](#graph) - **Status:** Pending
+   - [Graph](#graph) - **Status:** Completed
    - [Tree](#tree) - **Status:** Pending
    - [Matrix/Grid](#matrixgrid) - **Status:** Pending
    - [String](#string) - **Status:** Pending
@@ -68,7 +68,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 
 ### Graph
 
-- **Status:** Pending
+- **Status:** Completed
 - Explore graph representation (adjacency list, adjacency matrix).
 - Learn about graph traversal algorithms like BFS and DFS.
 
@@ -92,7 +92,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 
 ### Trie
 
-- **Status:** Pending
+- **Status:** Completed
 - Explore tries as a specialized tree structure for storing strings.
 - Understand operations like insertion, deletion, and searching in tries.
 - Learn about applications such as autocomplete and spell-checking.
