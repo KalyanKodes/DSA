@@ -20,7 +20,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Sorting](#sorting) - **Status:** Completed
    - [Searching](#searching) - **Status:** Completed
    - [Divide & Conquer](#divide--conquer) - **Status:** Pending
-   - [Greedy](#greedy) - **Status:** Pending
+   - [Greedy](#greedy) - **Status:** Completed
    - [Dynamic Programming](#dynamic-programming) - **Status:** Pending
    - [Recursion](#recursion) - **Status:** Completed
    - [Backtracking](#backtracking) - **Status:** Pending
@@ -119,7 +119,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 
 ### Greedy
 
-- **Status:** Pending
+- **Status:** Completed
 - Study greedy algorithms and their applications in optimization problems.
 - Learn about algorithms like Huffman coding and Kruskal's algorithm.
 
