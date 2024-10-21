@@ -14,7 +14,7 @@ This guide provides a structured approach to learning Data Structures and Algori
    - [Graph](#graph) - **Status:** Completed
    - [Tree](#tree) - **Status:** Pending
    - [Matrix/Grid](#matrixgrid) - **Status:** Pending
-   - [String](#string) - **Status:** Pending
+   - [String](#string) - **Status:** Completed
    - [Trie](#trie) - **Status:** Completed
 2. [Algorithms](#algorithms)
    - [Sorting](#sorting) - **Status:** Completed
@@ -86,7 +86,7 @@ This guide provides a structured approach to learning Data Structures and Algori
 
 ### String
 
-- **Status:** Pending
+- **Status:** Completed
 - Learn about string manipulation and pattern matching algorithms.
 - Study common string algorithms like KMP and Rabin-Karp.
 
